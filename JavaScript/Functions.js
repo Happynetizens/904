@@ -1,4 +1,4 @@
-function Progress(){
+function Progress() {
 	let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
 	let scrollHeight = document.documentElement.scrollHeight;
 	let windowHeight = window.innerHeight;
@@ -15,36 +15,46 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 const timings = [
-	{place: 0, content: "序"},
-	{place: 10, content: "已读10%"},
-	{place: 20, content: "已读20%"},
-	{place: 30, content: "已读30%"},
-	{place: 40, content: "已读40%"},
-	{place: 50, content: "已读50%"},
-	{place: 60, content: "已读60%"},
-	{place: 70, content: "已读70%"},
-	{place: 80, content: "已读80%"},
-	{place: 90, content: "已读90%"},
-	{place: 100, content: "已读100%"}
+	{place: 'Grade7Volume1', date: "七年级上册"},
+	{place: 'BeginSchool', date: "2023年9月1日"},
+	{place: 'Grade7Volume2', date: "七年级下册"},
+	{place: 'Grade8Volume1', date: "八年级上册"},
+	{place: 'Grade8Volume2', date: "八年级下册"},
+	{place: 'Grade9Volume1', date: "九年级上册"},
+	{place: 'Grade9Volume2', date: "九年级下册"},
+	{place: 'EMPTY', date: ""}
 ];
-function CurbTab() {
-	function findTab(time) {
-		for(let i=0; i<timings.length-1; i++){
-			if(timings[i].place<=time && time<timings[i+1].place){
-				return i;
-			}
+function IsShowing(ElementId) {
+	const element = document.getElementById(ElementId);
+	if (!element) return false;
+	const rect = element.getBoundingClientRect();
+	return (rect.top >= 0 && rect.left >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth));
+}
+function findTab() {
+	let IsIn = 2;
+	for(let i=0; i<timings.length-1; i++) {
+		if(IsShowing(timings[i].place) && !IsShowing(timings[i+1].place)) {
+			return i;
 		}
-		return timings.length-1;
 	}
-	let p = findTab(Progress());
+	return -1;
+}
+function CurbTab() {
+	let p = findTab();
 	let TabLast = document.getElementById('TabLast');
 	let TabThis = document.getElementById('TabThis');
 	let TabNext = document.getElementById('TabNext');
-	if(p-1>=0) TabLast.innerHTML = timings[p-1].content;
-	else TabLast.innerHTML = "";
-	TabThis.innerHTML = timings[p].content;
-	if(p+1<timings.length) TabNext.innerHTML = timings[p+1].content;
-	else TabNext.innerHTML = "";
+	if(p === -1) {
+		TabLast.innerHTML = "";
+		TabThis.innerHTML = "";
+		TabNext.innerHTML = "";
+	} else {
+		if(p-1 >= 0) TabLast.innerHTML = timings[p-1].date;
+		else TabLast.innerHTML = "";
+		TabThis.innerHTML = timings[p].date;
+		if(p+1 < timings.length) TabNext.innerHTML = timings[p+1].date;
+		else TabNext.innerHTML = "";
+	}
 }
 setInterval(CurbTab, 0);
 
@@ -56,28 +66,27 @@ function PassingTime() {
 	let hour = Math.floor((time % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
 	let minute = Math.floor((time % (60 * 60 * 1000)) / (60 * 1000));
 	let second = Math.floor((time % (60 * 1000)) / 1000);
-	function style(num) {
-		if(num < 10) return "0" + num;
-		else return "" + num;
-	}
 	let PrintTime= "";
 	if(year > 0) PrintTime += year + "年";
-	if(month > 0) PrintTime += style(month) + "月";
-	if(day > 0) PrintTime += style(day) + "天";
-	if(hour > 0) PrintTime += style(hour) + "小时";
-	if(minute > 0) PrintTime += style(minute) + "分钟";
-	if(second > 0) PrintTime += style(second) + "秒";
+	if(month > 0) PrintTime += month + "个月";
+	if(day > 0) PrintTime += day + "天";
+	if(hour > 0) PrintTime += hour + "小时";
+	if(minute > 0) PrintTime += minute + "分钟";
+	if(second > 0) PrintTime += second + "秒";
 	let Time = document.getElementById("Time");
 	if(Time!=null) Time.innerHTML = "我们的回忆就在" + PrintTime + "前";
 }
-setInterval(PassingTime, 0);
 
 function ShowTime() {
-	if(Progress() >= 75 && document.getElementById('Time')==null){
-		let P = document.createElement('p');
-		P.id = 'Time';
-		P.className = 'Time';
-		document.body.appendChild(P);
+	if(document.getElementById('Time')==null) {
+		if(Progress() >= 75 || isNaN(Progress())) {
+			let P = document.createElement('p');
+			P.id = 'Time';
+			P.className = 'Time';
+			document.body.appendChild(P);
+		}
+	} else {
+		PassingTime();
 	}
 }
 setInterval(ShowTime, 0);
