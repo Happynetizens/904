@@ -4,7 +4,7 @@ body{scrollbar-width: none; -ms-overflow-style: none; overflow-x: hidden; overfl
 body::-webkit-scrollbar{display: none; width: 0;}
 body::-webkit-scrollbar-track{background: transparent;}
 body::-webkit-scrollbar-thumb{background: transparent;}
-.background{background-image: radial-gradient(circle at 50% 50%, rgba(183, 227, 231, 0.47), rgba(122, 180, 180, 0.34));}
+.background{background-image: radial-gradient(circle at 50% 50%, rgba(183, 227, 231, 0.3), rgba(122, 180, 180, 0.2));}
 progress{position: fixed; top: 0; left: 0; right: 0; height: 0.1%; width: auto; border-style: none; background: rgba(0, 0, 0, 0);}
 progress::-webkit-progress-bar{background: rgba(0, 0, 0, 0); border-radius: 6px;}
 progress::-webkit-progress-value{background: rgba(192, 255, 233, 0.9); border-radius: 6px;}
@@ -18,5 +18,7 @@ progress::-moz-progress-bar{background: rgba(192, 255, 233, 0.9); border-radius:
 .next{position: absolute; top: 0; right: 10%; margin-bottom: 5vh; font-size: 3vh; color: rgba(0, 0, 0, 0.9);}
 .bubble{position: fixed; top: 50%; left: 50%; width: 20px; height: 20px; border-radius: 50%; color: aliceblue; background: azure; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);}
 .center{position: fixed; top: 8%; bottom: 15%; left: 15%; right: 15%; height: auto; width: auto; background: white; border-style: solid; border-color: aliceblue; border-width: 1px; border-radius: 2vmin; text-align: center;}
-.frame{position: fixed; top: 7.7%; bottom: 14.7%; left: 14.8%; right: 14.8%; height: auto; width: auto; background: repeating-linear-gradient(to right, #add8e6 0%, #b0c4de 25%, #ffffe0 50%, #fffacd 75%, #add8e6 100%) !important; border-radius: 2vmin;}
+.frame{position: fixed; top: 7.7%; bottom: 14.7%; left: 14.8%; right: 14.8%; height: auto; width: auto; background: repeating-linear-gradient(to bottom right, #add8e6, #b0c4de, #9400D3, #ffffe0, #fffacd, #ffa500) !important; border-radius: 2vmin;}
+.Hidden p{display: none;}
+.hidden{display: none;}
 
