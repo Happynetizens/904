@@ -19,6 +19,6 @@ progress::-moz-progress-bar{background: rgba(192, 255, 233, 0.9); border-radius:
 .bubble{position: fixed; top: 50%; left: 50%; width: 20px; height: 20px; border-radius: 50%; color: aliceblue; background: azure; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);}
 .center{position: fixed; top: 8%; bottom: 15%; left: 15%; right: 15%; height: auto; width: auto; background: white; border-style: solid; border-color: aliceblue; border-width: 1px; border-radius: 2vmin; text-align: center;}
 .frame{position: fixed; top: 7.7%; bottom: 14.7%; left: 14.8%; right: 14.8%; height: auto; width: auto; background: repeating-linear-gradient(to bottom right, #add8e6, #b0c4de, #9400D3, #ffffe0, #fffacd, #ffa500) !important; border-radius: 2vmin;}
-.Hidden p{display: none;}
 .hidden{display: none;}
+.appear{display: block;}
 
