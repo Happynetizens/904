@@ -32,14 +32,14 @@ function Inspect(p) {
 }
 function theNext(place) {
 	place++;
-	while (Inspect(place)) {
+	while (!Inspect(place)) {
 		place++;
 	}
 	return place;
 }
 function theLast(place) {
 	place--;
-	while (Inspect(place)) {
+	while (!Inspect(place)) {
 		place--;
 	}
 	return place;
