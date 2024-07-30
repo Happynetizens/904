@@ -2,6 +2,7 @@ export const timings = [
 	{place: 'EMPTY', date: ""},
 	{place: 'Grade7Volume1', date: "七年级上册"},
 	{place: 'BeginSchool', date: "2023年9月1日"},
+	{place: 'leave2023', date: "2023年12月29日"},
 	{place: 'Grade7Volume2', date: "七年级下册"},
 	{place: 'Grade8Volume1', date: "八年级上册"},
 	{place: 'Grade8Volume2', date: "八年级下册"},
