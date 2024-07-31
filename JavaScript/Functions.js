@@ -1,4 +1,7 @@
-import {timings, useless, lastScrollY, scrollThreshold, Musics, ThisMusic} from './Library.js';
+import {timings, useless, scrollThreshold, Musics} from './Library.js';
+let lastScrollY = 0;
+let ThisMusic = 0;
+let Flag = false;
 
 function Progress() {
 	const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
@@ -8,29 +11,23 @@ function Progress() {
 	return scrollPercent * 100;
 }
 function IsShowing(ElementId) {
-	return document.getElementById(ElementId).className === "appear";
+	let element = document.getElementById(ElementId);
+	if (element) return document.getElementById(ElementId).classList.contains("appear");
+	else return false;
 }
 function Inspect(p) {
 	for (let i = 0; i < useless.length; i++) {
-		if (useless[i] === timings[p].place) {
-			return false;
-		}
+		if (useless[i] === timings[p].place) return false;
 	}
 	return true;
 }
 function theNext(place) {
-	place++;
-	while (!Inspect(place)) {
-		place++;
-	}
-	return place;
+	while (!Inspect(++place)) void(0);
+	return place === timings.length-1? -1 : place;
 }
 function theLast(place) {
-	place--;
-	while (!Inspect(place)) {
-		place--;
-	}
-	return place;
+	while (!Inspect(--place)) void(0);
+	return place === 0? -1 : place;
 }
 function findContent() {
 	for (let i=0; i<timings.length-1; i++) {
@@ -90,15 +87,21 @@ function ShowTime() {
 }
 function CurbShow(way) {
 	let now = findContent();
-	if (way) {
+	if (way && theNext(now) !== -1) {
 		console.log('+');
 		document.getElementById(timings[now].place).className = "hidden";
 		document.getElementById(timings[theNext(now)].place).className = "appear";
-	} else {
+	}
+	if (!way && theLast(now)!== -1) {
 		console.log('-');
 		document.getElementById(timings[now].place).className = "hidden";
 		document.getElementById(timings[theLast(now)].place).className = "appear";
 	}
+}
+function CurbMusic() {
+	let Music = document.getElementById('Music');
+	Music.src = Musics[ThisMusic++ % Musics.length].url;
+	Music.play();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -116,7 +119,10 @@ window.addEventListener('scroll', function() {
 	lastScrollY = currentScrollY;
 });
 window.addEventListener('keydown', function(event){
-	document.getElementById('Music').play();
+	if (!Flag) {
+		CurbMusic();
+		Flag = true;
+	}
 	switch (event.key) {
 		case'ArrowDown': case'ArrowRight':
 		CurbShow(true);
@@ -128,11 +134,7 @@ window.addEventListener('keydown', function(event){
 		break;
 	}
 });
-document.getElementById('Music').addEventListener('ended', function () {
-	let Music = document.getElementById('Music');
-	Music.src = Musics[++ThisMusic % Musics.length].url;
-	Music.play();
-});
+document.getElementById('Music').addEventListener('ended', CurbMusic);
 
 setInterval(CurbTab, 0);
 setInterval(ShowTime, 0);

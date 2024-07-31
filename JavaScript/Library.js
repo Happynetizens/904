@@ -8,7 +8,7 @@ export const timings = [
 	{place: 'Grade8Volume2', date: "八年级下册"},
 	{place: 'Grade9Volume1', date: "九年级上册"},
 	{place: 'Grade9Volume2', date: "九年级下册"},
-	{place: 'EMPTY', date: ""}
+	{place: 'EMPTY', date: ""},
 ];
 export const useless = [
 	'Grade7Volume1',
@@ -17,13 +17,11 @@ export const useless = [
 	'Grade8Volume2',
 	'Grade9Volume1',
 	'Grade9Volume2',
+	// 'EMPTY',
 ];
-export let lastScrollY = 0;
 export const scrollThreshold = 10;
 export const Musics = [
 	{name: "记念", url: "../Music/记念.flac"},
 	{name: "窗外的月光", url: "../Music/窗外的月光.flac"},
-]
-export let ThisMusic = 0;
-export let flag = false;
+];
 
