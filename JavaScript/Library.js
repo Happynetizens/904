@@ -1,5 +1,6 @@
 export const timings = [
 	{place: 'EMPTY', date: ""},
+	{place: 'Start', date: ""},
 	{place: 'Grade7Volume1', date: "七年级上册"},
 	{place: 'BeginSchool', date: "2023年9月1日"},
 	{place: 'leave2023', date: "2023年12月29日"},
@@ -8,6 +9,7 @@ export const timings = [
 	{place: 'Grade8Volume2', date: "八年级下册"},
 	{place: 'Grade9Volume1', date: "九年级上册"},
 	{place: 'Grade9Volume2', date: "九年级下册"},
+	{place: 'End', date: "尾声"},
 	{place: 'EMPTY', date: ""},
 ];
 export const useless = [
@@ -17,7 +19,6 @@ export const useless = [
 	'Grade8Volume2',
 	'Grade9Volume1',
 	'Grade9Volume2',
-	// 'EMPTY',
 ];
 export const scrollThreshold = 10;
 export const Musics = [

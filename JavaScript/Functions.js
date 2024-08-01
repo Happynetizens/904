@@ -3,13 +3,6 @@ let lastScrollY = 0;
 let ThisMusic = 0;
 let Flag = false;
 
-function Progress() {
-	const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-	const scrollHeight = document.documentElement.scrollHeight;
-	const windowHeight = window.innerHeight;
-	const scrollPercent = (scrollTop / (scrollHeight - windowHeight));
-	return scrollPercent * 100;
-}
 function IsShowing(ElementId) {
 	let element = document.getElementById(ElementId);
 	if (element) return document.getElementById(ElementId).classList.contains("appear");
@@ -71,11 +64,11 @@ function PassingTime() {
 	if (minute > 0) PrintTime += minute + "分钟";
 	if (second > 0) PrintTime += second + "秒";
 	const Time = document.getElementById("Time");
-	if (Time!=null) Time.innerHTML = "我们的回忆就在" + PrintTime + "前";
+	if (Time !== null) Time.innerHTML = "我们的回忆就在" + PrintTime + "前";
 }
 function ShowTime() {
-	if (document.getElementById('Time')==null) {
-		if (Progress() >= 75 || isNaN(Progress())) {
+	if (document.getElementById('Time') === null) {
+		if (document.getElementById('End').classList.contains('appear')) {
 			const P = document.createElement('p');
 			P.id = 'Time';
 			P.className = 'Time';
@@ -104,13 +97,6 @@ function CurbMusic() {
 	Music.play();
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-	window.onscroll = function () {
-		const scrollPercent = Progress();
-		const progress = document.querySelector('progress');
-		progress.value = scrollPercent;
-	}
-});
 window.addEventListener('scroll', function() {
 	const currentScrollY = window.scrollY || document.documentElement.scrollTop;
 	const scrollDelta = currentScrollY - lastScrollY;
@@ -118,7 +104,7 @@ window.addEventListener('scroll', function() {
 	if (scrollDelta < -scrollThreshold) CurbShow(false);
 	lastScrollY = currentScrollY;
 });
-window.addEventListener('keydown', function(event){
+window.addEventListener('keydown', function(event) {
 	if (!Flag) {
 		CurbMusic();
 		Flag = true;
