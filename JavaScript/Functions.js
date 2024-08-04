@@ -93,7 +93,7 @@ function CurbShow(way) {
 }
 function CurbMusic() {
 	let Music = document.getElementById('Music');
-	Music.src = Musics[ThisMusic++ % Musics.length].url;
+	Music.src = './Music/' + Musics[ThisMusic++ % Musics.length].file;
 	Music.play();
 }
 

@@ -22,7 +22,7 @@ export const useless = [
 ];
 export const scrollThreshold = 10;
 export const Musics = [
-	{name: "记念", url: "../Music/记念.flac"},
-	{name: "窗外的月光", url: "../Music/窗外的月光.flac"},
+	{name: "记念", file: "记念.flac"},
+	{name: "窗外的月光", file: "窗外的月光.flac"},
 ];
 
