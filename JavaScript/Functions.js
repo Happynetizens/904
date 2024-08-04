@@ -81,12 +81,10 @@ function ShowTime() {
 function CurbShow(way) {
 	let now = findContent();
 	if (way && theNext(now) !== -1) {
-		console.log('+');
 		document.getElementById(timings[now].place).className = "hidden";
 		document.getElementById(timings[theNext(now)].place).className = "appear";
 	}
 	if (!way && theLast(now)!== -1) {
-		console.log('-');
 		document.getElementById(timings[now].place).className = "hidden";
 		document.getElementById(timings[theLast(now)].place).className = "appear";
 	}
