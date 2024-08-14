@@ -74,9 +74,7 @@ function ShowTime() {
 			P.className = 'Time';
 			document.body.appendChild(P);
 		}
-	} else {
-		PassingTime();
-	}
+	} else PassingTime();
 }
 function CurbShow(way) {
 	let now = findContent();
