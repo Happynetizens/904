@@ -36,16 +36,16 @@ function CurbTab() {
 	const TabLast = document.getElementById('TabLast');
 	const TabThis = document.getElementById('TabThis');
 	const TabNext = document.getElementById('TabNext');
-	if (p === -1) {
+	if (p !== -1) {
+		if (p - 1 >= 0) TabLast.innerHTML = timings[p - 1].date;
+		else TabLast.innerHTML = "";
+		TabThis.innerHTML = timings[p].date;
+		if (p + 1 < timings.length) TabNext.innerHTML = timings[p + 1].date;
+		else TabNext.innerHTML = "";
+	} else {
 		TabLast.innerHTML = "";
 		TabThis.innerHTML = "";
 		TabNext.innerHTML = "";
-	} else {
-		if (p-1 >= 0) TabLast.innerHTML = timings[p-1].date;
-		else TabLast.innerHTML = "";
-		TabThis.innerHTML = timings[p].date;
-		if (p+1 < timings.length) TabNext.innerHTML = timings[p+1].date;
-		else TabNext.innerHTML = "";
 	}
 }
 function PassingTime() {
@@ -76,7 +76,7 @@ function ShowTime() {
 		}
 	} else PassingTime();
 }
-function CurbShow(way) {
+function CurbShow(way = true) {
 	let now = findContent();
 	if (way && theNext(now) !== -1) {
 		document.getElementById(timings[now].place).className = "hidden";
@@ -92,8 +92,9 @@ function CurbMusic() {
 	Music.src = './Music/' + Musics[ThisMusic++ % Musics.length].file;
 	Music.play();
 }
+window.CurbShow = CurbShow;
 
-window.addEventListener('scroll', function() {
+	window.addEventListener('scroll', function() {
 	const currentScrollY = window.scrollY || document.documentElement.scrollTop;
 	const scrollDelta = currentScrollY - lastScrollY;
 	if (scrollDelta > scrollThreshold) CurbShow(true);

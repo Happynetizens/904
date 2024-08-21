@@ -17,4 +17,5 @@ body::-webkit-scrollbar-thumb{background: transparent;}
 .frame{position: fixed; top: 7.7%; bottom: 14.7%; left: 14.8%; right: 14.8%; height: auto; width: auto; background: repeating-linear-gradient(to bottom right, #add8e6, #b0c4de, #9400D3, #ffffe0, #fffacd, #ffa500) !important; border-radius: 2vmin;}
 .hidden{display: none;}
 .appear{display: block;}
+.continue{left: 50%; transform: translateX(-50%);}
 

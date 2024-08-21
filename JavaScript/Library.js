@@ -10,6 +10,7 @@ export const timings = [
 	{place: 'Grade9Volume1', date: "九年级上册"},
 	{place: 'Grade9Volume2', date: "九年级下册"},
 	{place: 'End', date: "尾声"},
+	{place: 'extra', date: "彩蛋"},
 	{place: 'EMPTY', date: ""},
 ];
 export const useless = [
