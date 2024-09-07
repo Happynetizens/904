@@ -94,7 +94,7 @@ function CurbMusic() {
 }
 window.CurbShow = CurbShow;
 
-	window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function() {
 	const currentScrollY = window.scrollY || document.documentElement.scrollTop;
 	const scrollDelta = currentScrollY - lastScrollY;
 	if (scrollDelta > scrollThreshold) CurbShow(true);
