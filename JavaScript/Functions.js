@@ -1,5 +1,4 @@
-import {timings, useless, scrollThreshold, Musics} from './Library.js';
-let lastScrollY = 0;
+import {timings, useless, Musics} from './Library.js';
 let ThisMusic = 0;
 let Flag = false;
 
@@ -49,7 +48,7 @@ function CurbTab() {
 	}
 }
 function PassingTime() {
-	const time = new Date() - new Date(2024, 5, 2, 21, 0, 0);
+	const time = new Date() - new Date(2024, 6 - 1, 2, 21, 0, 0);
 	const year = Math.floor(time / (365 * 24 * 60 * 60 * 1000));
 	const month = Math.floor((time % (365 * 24 * 60 * 60 * 1000)) / (30 * 24 * 60 * 60 * 1000));
 	const day = Math.floor((time % (30 * 24 * 60 * 60 * 1000)) / (24 * 60 * 60 * 1000));
@@ -92,15 +91,12 @@ function CurbMusic() {
 	Music.src = './Music/' + Musics[ThisMusic++ % Musics.length].file;
 	Music.play();
 }
+function ToTop() {
+	document.getElementById('contents').scrollTop = 0;
+}
 window.CurbShow = CurbShow;
+window.toTop = ToTop;
 
-window.addEventListener('scroll', function() {
-	const currentScrollY = window.scrollY || document.documentElement.scrollTop;
-	const scrollDelta = currentScrollY - lastScrollY;
-	if (scrollDelta > scrollThreshold) CurbShow(true);
-	if (scrollDelta < -scrollThreshold) CurbShow(false);
-	lastScrollY = currentScrollY;
-});
 window.addEventListener('keydown', function(event) {
 	if (!Flag) {
 		CurbMusic();

@@ -81,25 +81,35 @@
     </head>
     <body class="background color">
         <div class="frame">
-            <div class="center">
+            <div class="center" id="contents">
                 <div id="Start" class="appear">
                     <p></p>
                 </div>
                 <div id="Grade7Volume1">
                     <div id="BeginSchool" class="hidden">
-                        <p><strong>看啊，那是23年刚刚开学时的我们</strong></p> <br/>
+                        <p><strong>看啊，那是23年刚刚开学时的我们</strong></p>
                         <p>那时候的记忆还深刻吗？</p>
                         <p>是否还记得自己的第一个同桌呢？</p>
-                        <img src="./Image/初中开学.jpg" class="image1">
+                        <img src="./Image/初中开学.jpg" alt="" class="image1"/> <br/>
                     </div>
-                    <div class="hidden">
-                        <p>那是第一次军训时的我们</p>
+                    <div id="army1" class="hidden">
+                        <p><strong>这是第一次军训时的我们</strong></p>
+                        <!-- more -->
+                        <img src="./Image/7年级军训1.jpg" alt="" class="image2"/> <br/>
+                        <img src="./Image/7年级军训2.jpg" alt="" class="image2"/> <br/>
                     </div>
-                    <div class="hidden">
-                        <p>为运动会付出的老师们</p>
+                    <div id="2023-SportsMeeting" class="hidden">
+                        <!-- more -->
+                        <p>还有为运动会付出的老师们</p>
+                        <img src="./Image/7运动会.jpg" alt="" class="image2"/> <br/>
+                        <!-- more -->
                     </div>
-                    <div class="hidden">
-                        <p>有使人出类拔萃的运动会，也有集体配合的广播体操比赛</p>
+                    <div id="7Exercise" class="hidden">
+                        <p>有出类拔萃的运动会，也有集体配合的广播体操比赛</p>
+                        <img src="./Image/广播体操2.jpg" alt="" class="image2"/>
+                        <img src="./Image/广播体操1.jpg" alt="" class="image2"/>
+                        <p>这是我们集体的荣誉！</p>
+                        <img src="./Image/广播体操3.jpg" alt="" class="image2"/>
                     </div>
                     <div id="leave2023" class="hidden">
                         <p>我们用一次盛大的元旦晚会送走了2023</p>
@@ -129,7 +139,7 @@
 
                 </div>
                 <div class="container">
-                    <a onclick="CurbShow(true)" class="button type--C">
+                    <a onclick="CurbShow(true); toTop()" class="button type--C" id="totop">
                         <div class="button__line"></div>
                         <div class="button__line"></div>
                         <span class="button__text">Continue</span>

@@ -3,6 +3,9 @@ export const timings = [
 	{place: 'Start', date: ""},
 	{place: 'Grade7Volume1', date: "七年级上册"},
 	{place: 'BeginSchool', date: "2023年9月1日"},
+	{place: 'army1', date: "2023年9月18日"},
+	{place: '2023-SportsMeeting', date: "2023年9月29日"},
+	{place: '7Exercise', date: "2023年11月"},
 	{place: 'leave2023', date: "2023年12月29日"},
 	{place: 'Grade7Volume2', date: "七年级下册"},
 	{place: 'Grade8Volume1', date: "八年级上册"},
@@ -21,7 +24,6 @@ export const useless = [
 	'Grade9Volume1',
 	'Grade9Volume2',
 ];
-export const scrollThreshold = 10;
 export const Musics = [
 	{name: "记念", file: "记念.flac"},
 	{name: "窗外的月光", file: "窗外的月光.flac"},
