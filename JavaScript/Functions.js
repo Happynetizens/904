@@ -75,7 +75,11 @@ function ShowTime() {
 		}
 	} else PassingTime();
 }
+function ToTop() {
+	document.getElementById('contents').scrollTop = 0;
+}
 function CurbShow(way = true) {
+	ToTop();
 	let now = findContent();
 	if (way && theNext(now) !== -1) {
 		document.getElementById(timings[now].place).className = "hidden";
@@ -91,11 +95,7 @@ function CurbMusic() {
 	Music.src = './Music/' + Musics[ThisMusic++ % Musics.length].file;
 	Music.play();
 }
-function ToTop() {
-	document.getElementById('contents').scrollTop = 0;
-}
 window.CurbShow = CurbShow;
-window.toTop = ToTop;
 
 window.addEventListener('keydown', function(event) {
 	if (!Flag) {

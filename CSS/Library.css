@@ -15,8 +15,9 @@ strong{font-size: 1.12em;}
 .frame{position: fixed; top: 7.7%; bottom: 14.7%; left: 14.8%; right: 14.8%; height: auto; width: auto; background: repeating-linear-gradient(to bottom right, #add8e6, #b0c4de, #9400D3, #ffffe0, #fffacd, #ffa500) !important; border-radius: 2vmin;}
 .hidden{display: none;}
 .appear{display: block;}
-.image1{max-width: 15em; height: auto;}
+.image1{max-width: 18em; height: auto;}
 .image2{max-width: 20em; height: auto;}
+.image3{max-width: 25em; height: auto;}
 .type--A{--line_color: #555555; --back_color: #ffecf6;}
 .type--B{--line_color: #1b1919; --back_color: #e9ecff;}
 .type--C{--line_color: #00135c; --back_color: #defffa;}

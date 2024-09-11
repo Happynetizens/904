@@ -1,6 +1,6 @@
 export const timings = [
 	{place: 'EMPTY', date: ""},
-	{place: 'Start', date: ""},
+	{place: 'Start', date: "我们的202304!"},
 	{place: 'Grade7Volume1', date: "七年级上册"},
 	{place: 'BeginSchool', date: "2023年9月1日"},
 	{place: 'army1', date: "2023年9月18日"},
@@ -25,7 +25,8 @@ export const useless = [
 	'Grade9Volume2',
 ];
 export const Musics = [
-	{name: "记念", file: "记念.flac"},
-	{name: "窗外的月光", file: "窗外的月光.flac"},
+	{name: "记念", file: '记念.flac'},
+	{name: "窗外的月光", file: '窗外的月光.flac'},
+	{name: "送别", file: '送别.flac'},
 ];
 
