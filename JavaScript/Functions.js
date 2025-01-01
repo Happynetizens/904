@@ -1,10 +1,10 @@
 import {timings, useless, Musics} from './Library.js';
 let ThisMusic = 0;
-let Flag = false;
+let flag = false;
 
 function IsShowing(ElementId) {
 	let element = document.getElementById(ElementId);
-	if (element) return document.getElementById(ElementId).classList.contains("appear");
+	if (element) return element.classList.contains("appear");
 	else return false;
 }
 function Inspect(p) {
@@ -98,9 +98,9 @@ function CurbMusic() {
 window.CurbShow = CurbShow;
 
 window.addEventListener('keydown', function(event) {
-	if (!Flag) {
+	if (!flag) {
 		CurbMusic();
-		Flag = true;
+		flag = true;
 	}
 	switch (event.key) {
 		case'ArrowDown': case'ArrowRight':
