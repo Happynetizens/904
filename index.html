@@ -59,6 +59,7 @@
 <!-- 张凌瑜 -->
 <!-- 田若惜 -->
 <!-- 夏宇轩 -->
+<!-- 吴俊燃 -->
 <!-- And our teachers: -->
 <!-- 语文 周靖 老师 -->
 <!-- 数学 朱竞 老师 -->
@@ -66,7 +67,7 @@
 <!-- 历史 王一明 老师 -->
 <!-- 道法 张柳 王文芳 老师 -->
 <!-- 物理 张蕾 老师 -->
-<!-- 化学 ？？ 老师 -->
+<!-- 化学 鲁文倩 老师 -->
 <!-- 生物 罗汉阳 老师 -->
 <!-- 地理 何华斌 老师 -->
 <!-- 体育 余思龙 老师 -->
@@ -77,69 +78,17 @@
         <title>remember</title>
         <link rel="stylesheet" href="./CSS/Library.css" type="text/css">
         <script type="module" src="./JavaScript/Functions.js"></script>
-        <audio id="Music"></audio>
+        <audio id="Music" src="./Music/记念.flac"></audio>
     </head>
     <body class="background color">
         <div class="frame">
             <div class="center" id="contents">
-                <div id="Start" class="appear">
-                    <!-- more -->
-                </div>
-                <div id="Grade7Volume1">
-                    <div id="BeginSchool" class="hidden">
-                        <p><strong>看啊，那是23年刚刚开学时的我们</strong></p>
-                        <p>那时候的记忆还深刻吗？</p>
-                        <p>是否还记得自己的第一个同桌呢？</p>
-                        <img src="./Image/初中开学.jpg" alt="" class="image1"/> <br/>
-                    </div>
-                    <div id="army1" class="hidden">
-                        <p><strong>这是第一次军训时的我们</strong></p>
-                        <!-- more -->
-                        <img src="./Image/7年级军训1.jpg" alt="" class="image2"/> <br/>
-                        <img src="./Image/7年级军训2.jpg" alt="" class="image2"/> <br/>
-                    </div>
-                    <div id="2023-SportsMeeting" class="hidden">
-                        <!-- more -->
-                        <p>还有为运动会付出的老师们</p>
-                        <img src="./Image/7运动会.jpg" alt="" class="image2"/> <br/>
-                        <!-- more -->
-                    </div>
-                    <div id="7Exercise" class="hidden">
-                        <p>有出类拔萃的运动会，也有集体配合的广播体操比赛</p>
-                        <img src="./Image/广播体操2.jpg" alt="" class="image3"/>
-                        <img src="./Image/广播体操1.jpg" alt="" class="image3"/>
-                        <p>这是我们集体的荣誉！</p>
-                        <img src="./Image/广播体操3.jpg" alt="" class="image3"/>
-                    </div>
-                    <div id="leave2023" class="hidden">
-                        <p>我们用一次盛大的元旦晚会送走了2023</p>
-                    </div>
-                </div>
-                <div id="Grade7Volume2">
-                    <div class="hidden">
-                        <p>我们的天天读唱，台上台下都是快乐！</p>
-                    </div>
-                </div>
-                <div id="Grade8Volume1">
-
-                </div>
-                <div id="Grade8Volume2">
-
-                </div>
-                <div id="Grade9Volume1">
-
-                </div>
-                <div id="Grade9Volume2">
-
-                </div>
-                <div id="End" class="hidden">
-
-                </div>
-                <div id="extra">
+                <div id="content">
+                    <!-- central content -->
 
                 </div>
                 <div class="container">
-                    <a onclick="CurbShow()" class="button type--C" id="totop">
+                    <a onclick="pageChange(+1)" class="button type--C" id="totop">
                         <div class="button__line"></div>
                         <div class="button__line"></div>
                         <span class="button__text">Continue</span>
@@ -150,12 +99,12 @@
             </div>
         </div>
         <div class="order">
-            <p id="TabLast" class="tab last"></p>
-            <p id="TabThis" class="tab this"></p>
-            <p id="TabNext" class="tab next"></p>
+            <a id="lastTag" class="tab last" onclick="pageChange(-1)"></a>
+            <p id="thisTag" class="tab this"></p>
+            <a id="nextTag" class="tab next" onclick="pageChange(+1)"></a>
             <div class="base"></div>
         </div>
     </body>
 </html>
-<!--    ——线段   ——于2024.7.23开始编写 -->
+<!--    ——线段line   ——于2024.7.23开始编写 -->
 

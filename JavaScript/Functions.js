@@ -1,120 +1,38 @@
-import {timings, useless, Musics} from './Library.js';
-let ThisMusic = 0;
-let flag = false;
+import {contentList, musicList} from './Library.js';
+let nowContent = 0, nowMusic = 0;
 
-function IsShowing(ElementId) {
-	let element = document.getElementById(ElementId);
-	if (element) return element.classList.contains("appear");
-	else return false;
+// change content
+function listCheck(ptr) {
+	return (0 < ptr && ptr < contentList.length)? ptr : 0;
 }
-function Inspect(p) {
-	for (let i = 0; i < useless.length; i++) {
-		if (useless[i] === timings[p].place) return false;
-	}
-	return true;
+function pageChange(toward) {		// toward = 1 / -1
+	if(! listCheck(nowContent + toward)) return;
+	nowContent += toward;
+	console.log("page will turn to " + nowContent);
+	document.getElementById("content").innerHTML = contentList[listCheck(nowContent)].codes;
+	document.getElementById("lastTag").innerHTML = contentList[listCheck(nowContent - 1)].tag;
+	document.getElementById("thisTag").innerHTML = contentList[listCheck(nowContent)].tag;
+	document.getElementById("nextTag").innerHTML = contentList[listCheck(nowContent + 1)].tag;
+	console.log("page has turned to " + nowContent);
+	document.getElementById('Music').play();		//just play music
 }
-function theNext(place) {
-	while (!Inspect(++place)) void(0);
-	return place === timings.length-1? -1 : place;
-}
-function theLast(place) {
-	while (!Inspect(--place)) void(0);
-	return place === 0? -1 : place;
-}
-function findContent() {
-	for (let i=0; i<timings.length-1; i++) {
-		if (!Inspect(i)) continue;
-		if (IsShowing(timings[i].place)) {
-			return i;
-		}
-	}
-	return -1;
-}
-function CurbTab() {
-	const p = findContent();
-	const TabLast = document.getElementById('TabLast');
-	const TabThis = document.getElementById('TabThis');
-	const TabNext = document.getElementById('TabNext');
-	if (p !== -1) {
-		if (p - 1 >= 0) TabLast.innerHTML = timings[p - 1].date;
-		else TabLast.innerHTML = "";
-		TabThis.innerHTML = timings[p].date;
-		if (p + 1 < timings.length) TabNext.innerHTML = timings[p + 1].date;
-		else TabNext.innerHTML = "";
-	} else {
-		TabLast.innerHTML = "";
-		TabThis.innerHTML = "";
-		TabNext.innerHTML = "";
-	}
-}
-function PassingTime() {
-	const time = new Date() - new Date(2024, 6 - 1, 2, 21, 0, 0);
-	const year = Math.floor(time / (365 * 24 * 60 * 60 * 1000));
-	const month = Math.floor((time % (365 * 24 * 60 * 60 * 1000)) / (30 * 24 * 60 * 60 * 1000));
-	const day = Math.floor((time % (30 * 24 * 60 * 60 * 1000)) / (24 * 60 * 60 * 1000));
-	const hour = Math.floor((time % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
-	const minute = Math.floor((time % (60 * 60 * 1000)) / (60 * 1000));
-	const second = Math.floor((time % (60 * 1000)) / 1000);
-	let PrintTime= "";
-	if (year > 0) PrintTime += year + "年";
-	if (month > 0) PrintTime += month + "个月";
-	if (day > 0) PrintTime += day + "天";
-	if (hour > 0) PrintTime += hour + "小时";
-	if (minute > 0) PrintTime += minute + "分钟";
-	if (second > 0) PrintTime += second + "秒";
-	const Time = document.getElementById("Time");
-	if (Time !== null) Time.innerHTML = "我们的回忆就在" + PrintTime + "前";
-}
-function ShowTime() {
-	if (document.getElementById('Time') === null) {
-		if (document.getElementById('End').classList.contains('appear')) {
-			const P = document.createElement('p');
-			P.id = 'Time';
-			P.className = 'Time';
-			document.body.appendChild(P);
-		}
-	} else PassingTime();
-}
-function ToTop() {
-	document.getElementById('contents').scrollTop = 0;
-}
-function CurbShow(way = true) {
-	ToTop();
-	let now = findContent();
-	if (way && theNext(now) !== -1) {
-		document.getElementById(timings[now].place).className = "hidden";
-		document.getElementById(timings[theNext(now)].place).className = "appear";
-	}
-	if (!way && theLast(now)!== -1) {
-		document.getElementById(timings[now].place).className = "hidden";
-		document.getElementById(timings[theLast(now)].place).className = "appear";
-	}
-}
-function CurbMusic() {
-	let Music = document.getElementById('Music');
-	Music.src = './Music/' + Musics[ThisMusic++ % Musics.length].file;
-	Music.play();
-}
-window.CurbShow = CurbShow;
-
-window.addEventListener('keydown', function(event) {
-	if (!flag) {
-		CurbMusic();
-		flag = true;
-	}
+window.pageChange = pageChange;		// button control
+window.addEventListener('keydown', function(event) {		// key control
 	switch (event.key) {
-		case'ArrowDown': case'ArrowRight':
-		CurbShow(true);
-		break;
 		case'ArrowUp': case'ArrowLeft':
-		CurbShow(false);
+		pageChange(-1);
+		break;
+		case'ArrowDown': case'ArrowRight':
+		pageChange(+1);
 		break;
 		default:
 		break;
 	}
 });
-document.getElementById('Music').addEventListener('ended', CurbMusic);
 
-setInterval(CurbTab, 0);
-setInterval(ShowTime, 0);
+document.getElementById('Music').addEventListener('ended', () => {
+	let music = document.getElementById('Music');
+	music.src = './Music/' + musicList[nowMusic++ % musicList.length];
+	music.play();
+});
 
