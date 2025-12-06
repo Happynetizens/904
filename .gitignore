@@ -3,3 +3,5 @@
 .gitignore
 debug.log
 test.html
+zip.py
+*.org*
