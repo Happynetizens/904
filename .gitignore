@@ -1,7 +1,0 @@
-.git/
-.vscode/
-.gitignore
-debug.log
-test.html
-zip.py
-*.org*
