@@ -1,5 +1,5 @@
-@font-face{font-family: 'STCaiyun'; src: url('../Font/STCaiyun.ttf');}
-@font-face{font-family: 'YouYuan'; src: url('../Font/YouYuan.ttf');}
+@font-face{font-family: 'STCaiyun'; src: url('../Font/STCaiyun_inLibrary.ttf'); font-display: swap;}
+@font-face{font-family: 'YouYuan'; src: url('../Font/YouYuan.ttf'); font-display: swap;}
 ::-webkit-scrollbar{display: none; width: 0;}
 .background{background-image: radial-gradient(circle at 50% 50%, rgba(183, 227, 231, 0.3), rgba(122, 180, 180, 0.2));}
 .title{position: fixed; left: 1.5%; top: -0.5rem; font-size: 1.5rem; color: rgb(1, 1, 1); font-family: STCaiyun, serif;}
